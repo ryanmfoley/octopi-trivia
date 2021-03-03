@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "dependencies": {
+<<<<<<< HEAD
     "bcrypt": "^5.0.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
@@ -11,10 +12,24 @@
     "mongoose": "^5.11.18",
     "nodemon": "^2.0.7",
     "passport": "^0.4.1"
+=======
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongoose": "^5.11.18",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+>>>>>>> fb2787459fd7e5058744a0acbcbbc8fd10526af7
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
