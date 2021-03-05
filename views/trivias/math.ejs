@@ -3,8 +3,32 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+
+
     </head>
     <body>
-        <p><%=mathQuestion%></p>
+        <%/* for (let index in mathObject) { %>
+            <p><%=mathObject[index]["question"]%></p>
+            <p>Correct answer: <button type="button" name="button"><%=mathObject[index]["correct_answer"]%></button></p>
+
+
+            <% for (let j in mathObject[index]["incorrect_answers"]) { %>
+                <p>Wrong answers: <button type="button" name="button"><%=mathObject[index]["incorrect_answers"][j]%></button></p>
+
+            <% } %>
+
+
+        <% } */%>
+
+        <%=mathObject["question"]%>
+
+        <a href="http://localhost:3000/trivias/math/<%=num%>"><%=mathObject["correct_answer"]%></a>
+
+        <% for (let incorrectAnswer of mathObject["incorrect_answers"]) {%>
+            <button><%=incorrectAnswer%></button>
+        <% } %>
+
     </body>
+
+
 </html>
