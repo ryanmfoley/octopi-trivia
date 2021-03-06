@@ -14,39 +14,38 @@ const mongodbURI = process.env.MONGODBURI
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
 app.use(
-    session({
-        secret: process.env.SECRET,
-        resave: false,
-        saveUninitialized: false,
-    })
+	session({
+		secret: process.env.SECRET,
+		resave: false,
+		saveUninitialized: false,
+	})
 )
 
 // Mongo connection // Database
 mongoose.connect(
-  mongodbURI,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true,
-  },
-  () => {
-    console.log('the connection with mongod is established at', mongodbURI)
-  }
+	mongodbURI,
+	{
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+		useFindAndModify: false,
+		useCreateIndex: true,
+	},
+	() => {
+		console.log('the connection with mongod is established at', mongodbURI)
+	}
 )
 
 db.on('error', (err) => {
-    console.log(err.message + ' is mongod not running?');
+	console.log(err.message + ' is mongod not running?')
 })
 
 db.on('disconnected', () => {
-    console.log('mongo disconnected');
+	console.log('mongo disconnected')
 })
-
 
 // Controllers
 const triviasController = require('./controllers/trivia_controller.js')
-app.use('/trivias', triviasController)
+app.use('/lobby', triviasController)
 
 const userController = require('./controllers/users_controller.js')
 app.use('/users', userController)
@@ -56,11 +55,9 @@ app.use('/sessions', sessionsController)
 
 // Routes
 app.get('/', (req, res) => {
-    res.redirect('/trivias')
+	res.redirect('/lobby')
 })
 
-
-
 app.listen(PORT, () => {
-    console.log('Listening on port, ' , PORT);
+	console.log('Listening on port, ', PORT)
 })

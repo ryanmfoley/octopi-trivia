@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
-        <form class="" action="sessions?_method=DELETE" method="post">
-            <input type="submit" name="" value="Log Out">
-        </form>
-        <h1> OCTOPI </h1>
-        <a href="http://localhost:3000/trivias/math/0">Math</a>
-    </body>
+	<head>
+		<meta charset="utf-8" />
+		<title>Math</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<h1><%=topic%></h1>
+		<h3 class="question"><%=question%></h3>
+
+		<div class="answers-container">
+			<% for (let answer of answers) {%>
+			<button
+				class="answer"
+				data-answer="<%=correct_answer%>"
+				data-nextIndex="<%=nextIndex%>"
+			>
+				<%=answer%>
+			</button>
+			<% } %>
+		</div>
+
+		<p class="next-index">Next index: <%=nextIndex%></p>
+
+		<script>
+			const answers = document.querySelectorAll('.answers')
+			for (const answer of answers) {
+				answer.addEventListener('click', () => {
+					const correctAnswer = answer.getAttribute('data-answer')
+
+					if (answer.innerText === correctAnswer) {
+						// answer.classList.add('correct')
+						answer.style.background = 'green'
+					} else {
+						answer.style.background = 'red'
+						// answer.classList.add('incorrect')
+					}
+				})
+			}
+		</script>
+	</body>
 </html>
