@@ -3,9 +3,10 @@ const trivias = express.Router()
 const axios = require('axios')
 
 let mathObject = ""
+
 axios.get('https://opentdb.com/api.php?amount=15&category=19&difficulty=medium&type=multiple').then((response) => {
-    // console.log(response.data["results"])
     mathObject = response.data["results"]
+    console.log(mathObject);
 
 }).catch((error) => {
     console.log(error);
@@ -32,12 +33,18 @@ trivias.get('/', isAuthenticated, (req, res) => {
 
 
 trivias.get('/math/:questionNum', isAuthenticated, (req, res) => {
+    let nextIndex = parseInt(req.params.questionNum) + 1;
 
-    res.render('trivias/math.ejs',{
-        currentUser: req.session.currentUser,
-        mathObject: mathObject[req.params.questionNum],
-        num: req.params.questionNum
-    })
+    if (nextIndex <= mathObject.length) {
+        res.render('trivias/math.ejs',{
+            currentUser: req.session.currentUser,
+            mathObject: mathObject[req.params.questionNum],
+            nextIndex: nextIndex
+        })
+    } else {
+        res.redirect('/trivias')
+    }
+
 })
 
 
