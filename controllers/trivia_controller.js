@@ -29,105 +29,87 @@ trivias.get('/', isAuthenticated, (req, res) => {
 	})
 })
 
-// trivias.get('/:topic/:questionNum', isAuthenticated, (req, res) => {
-trivias.get('/:topic/:questionNum', isAuthenticated, (req, res) => {
+
+
+trivias.get('/:topic/:num', isAuthenticated, (req, res) => {
+
     topicsObject = {
         "art": 25,
         "film": 11,
         "geography": 22,
         "math" : 19,
-        "science_computers": 18
+        "science_computers": 18,
+        "music": 12
     }
+
     let topicID = topicsObject[req.params.topic]
     console.log(`subject: ${req.params.topic} ID: ${topicID}`);
-    axios.get(`https://opentdb.com/api.php?amount=15&category=${topicID}&difficulty=medium&type=multiple`).then((response) => {
-        const questions_array = response.data.results
-        console.log(response.data.results);
-        const nextIndex = parseInt(req.params.questionNum) + 1
+
+    // axios request
+    let questionsArray;
+    axios.get(`https://opentdb.com/api.php?amount=5&category=${topicID}&difficulty=medium&type=multiple`).then((response) => {
+
+        questionsArray = response.data.results
+        console.log("this is the information: ", questionsArray );
+
+
+
+        // next index of the next question within the array
+        const index = parseInt(req.params.num)
+        console.log(`index: ${index}`);
+
+        const nextIndex = index + 1
         console.log(`next index: ${nextIndex}`);
-        const topicObj = response.data.results
-        // console.table(`topic object: ${JSON.stringify(topicObj)}`);
-        const questionObj = topicObj[req.params.questionNum]
-        console.table(`questionObj: ${JSON.stringify(questionObj)}`);
-        const answersArray = questionObj["incorrect_answers"].concat(questionObj["correct_answer"])
-        console.log(`answers array: ${answersArray}`);
 
+        // Question Object at a given index
+        let questionObject = questionsArray[index]
+        console.log(`the questionObject: ${questionObject}`);
 
-        // SHUFFLE ANSWERS
+        // The Trivia Question string
+        let questionString = questionObject["question"]
+        console.log(`the question string: ${questionString}`);
 
-        answersArray = answers.sort(() => .5 - Math.random()
+        // grabs the incorrect answers from the question object
+        let incorrectAnswersArray = questionObject["incorrect_answers"]
+        console.log(`Incorrect answer array: ${incorrectAnswersArray}`);
 
+        // grabs the correct answers from the question object
+        let correctAnswer = questionObject["correct_answer"]
+        console.log(`Correct answer: ${correctAnswer}`);
+
+        // concatenates the incorrect and correct answers into an array
+        let answersArray = incorrectAnswersArray.concat(correctAnswer)
+        console.log(`All of the answers array: ${answersArray}`);
+
+        // Shuffle answer array
+
+        let shuffledAnswersArray = answersArray.sort(() =>
+            .5 - Math.random()
         )
-
-        if (nextIndex <= topic_array.length ) {
+        console.log(`Shuffle Answers Array: ${shuffledAnswersArray}`);
+        if (nextIndex < questionsArray.length) {
             res.render('trivias/trivia.ejs', {
-                currentUser: req.session.currentUser,
-                topic: req.params.topic,
-                question:
-
+                    currentUser: req.session.currentUser,
+                    topic: req.params.topic,
+                    question: questionString,
+                    answers: shuffledAnswersArray,
+                    nextIndex: nextIndex,
+                    correctAnswer: correctAnswer
             })
+        } else if (nextIndex >= questionsArray.length){
+            res.redirect('/lobby')
         }
 
+
+        // res.send('hello world')
+
+    }).catch((error) => {
+        console.log(error);
     })
-	// const { topic } = req.params
-	// let id
-	// console.log(topic, req.params)
-    //
-	// switch (topic) {
-	// 	case 'art':
-	// 		id = 25
-	// 		break
-	// 	case 'film':
-	// 		id = 11
-	// 		break
-	// 	case 'geography':
-	// 		id = 22
-	// 		break
-	// 	case 'math':
-	// 		id = 19
-	// 		break
-	// 	case 'science_computers':
-	// 		id = 18
-	// 		break
-	// 	default:
-	// 		id = 19
-	// }
-    //
-	// axios
-	// 	.get(
-	// 		`https://opentdb.com/api.php?amount=15&category=${id}&difficulty=medium&type=multiple`
-	// 	)
-	// 	.then((response) => {
-	// 		const nextIndex = +req.params.questionNum + 1
-	// 		const mathObj = response.data.results
-	// 		const questionObj = mathObj[req.params.questionNum]
-	// 		const { question } = questionObj
-	// 		const { incorrect_answers } = questionObj
-	// 		const { correct_answer } = questionObj
-	// 		let answers = incorrect_answers.concat(correct_answer)
-    //
-	// 		console.log(mathObj[req.params.questionNum])
-	// 		// Shuffle answers //
-	// 		answers = answers.sort(() => 0.5 - Math.random())
-	// 		// Redirect to trivias on last question //
-    //
-	// 		if (nextIndex <= mathObj.length) {
-	// 			res.render('trivias/trivia.ejs', {
-	// 				currentUser: req.session.currentUser,
-	// 				topic,
-	// 				question,
-	// 				answers,
-	// 				correct_answer,
-	// 				nextIndex,
-	// 			})
-	// 			//     	<a href="http://localhost:3000/trivias/math/<%=nextIndex%>"
-	// 		} else {
-	// 			res.redirect('/trivias')
-	// 		}
-	// 	})
-	// 	.catch((error) => {
-	// 		console.log(error)
-	// 	})
+
+
+
+
 })
 
 module.exports = trivias
