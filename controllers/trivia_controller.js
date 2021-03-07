@@ -25,7 +25,7 @@ trivias.get(
 		const { topic } = req.params
 		let id
 
-<<<<<<< HEAD
+
 	switch (topic) {
 		case 'art':
 			id = 25
@@ -54,36 +54,6 @@ trivias.get(
 		default:
 			id = 19
 	}
-=======
-		switch (topic) {
-			case 'art':
-				id = 25
-				break
-			case 'film':
-				id = 11
-				break
-			case 'geography':
-				id = 22
-				break
-			case 'history':
-				id = 23
-				break
-			case 'math':
-				id = 19
-				break
-			case 'music':
-				id = 12
-				break
-			case 'politics':
-				id = 24
-				break
-			case 'science':
-				id = 18
-				break
-			default:
-				id = 19
-		}
->>>>>>> 893e091470706d869b31c9d0372f4c7258bde233
 
 		const url = `https://opentdb.com/api.php?amount=6&category=${id}&difficulty=medium&type=multiple`
 
@@ -138,60 +108,6 @@ function renderTrivia(req, res, triviaObj) {
 	}
 }
 
-// axios
-// 	.get(
-// 		`https://opentdb.com/api.php?amount=15&category=${id}&difficulty=medium&type=multiple`
-// 	)
-// 	.then((response) => {
-// 		})
-// 		.catch((error) => {
-// 			console.log(error)
-// 		})
-// async function sendGetRequest(id) {
-// 	try {
-// 		const resp = await axios.get(
-// 			`https://opentdb.com/api.php?amount=15&category=${id}&difficulty=medium&type=multiple`
-// 		)
-// 		console.log(resp.data)
-// 	} catch (err) {
-// 		// Handle Error Here
-// 		console.error(err)
-// 	}
-// }
-// const { topic } = req.params
-// axios
-// 	.get(
-// 		`https://opentdb.com/api.php?amount=15&category=${id}&difficulty=medium&type=multiple`
-// 	)
-// 	.then((response) => {
-// 		const nextIndex = +req.params.questionNum + 1
-// 		const mathObj = response.data.results
-// 		const questionObj = mathObj[req.params.questionNum]
 
-// 		const { question } = questionObj
-// 		// let question = questionObj.question
-// 		const { incorrect_answers } = questionObj
-// 		const { correct_answer } = questionObj
-// 		let answers = incorrect_answers.concat(correct_answer)
-// 		// Shuffle answers //
-// 		answers = answers.sort(() => 0.5 - Math.random())
-// 		if (nextIndex <= mathObj.length) {
-// 			res.render('trivias/trivia.ejs', {
-// 				currentUser: req.session.currentUser,
-// 				topic,
-// 				question,
-// 				answers,
-// 				correct_answer,
-// 				nextIndex,
-// 			})
-// 			//     	<a href="http://localhost:3000/trivias/math/<%=nextIndex%>"
-// 		} else {
-// 			res.redirect('/trivias')
-// 		}
-// 	})
-// 	.catch((error) => {
-// 		console.log(error)
-// 	})
-// })
 
 module.exports = trivias

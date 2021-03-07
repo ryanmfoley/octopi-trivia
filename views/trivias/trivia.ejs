@@ -6,7 +6,6 @@
 		<link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-<<<<<<< HEAD
 		<header>
 		    <ul id="headers">
 		    <li>
@@ -38,6 +37,7 @@
 							class="choice"
 							data-answer="<%=correct_answer%>"
 							data-nextIndex="<%=nextIndex%>"
+							data-score="<%=score%>"
 						>
 							<%=answer%>
 						</button></th>
@@ -45,24 +45,7 @@
 				<% } %>
 			</div>
 		</table>
-=======
-		<h1><%=topic%></h1>
-		<h3 class="question"><%=question%></h3>
 
-		<div class="choice-container">
-			<% for (let answer of answers) {%>
-			<button
-				class="choice"
-				data-topic="<%=topic%>"
-				data-answer="<%=correct_answer%>"
-				data-nextIndex="<%=nextIndex%>"
-				data-score="<%=score%>"
-			>
-				<%=answer%>
-			</button>
-			<% } %>
-		</div>
->>>>>>> 893e091470706d869b31c9d0372f4c7258bde233
 
 		<h3>Score<%=score%></h3>
 		<p><%=correct_answer%></p>
