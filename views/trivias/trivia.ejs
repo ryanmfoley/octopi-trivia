@@ -2,24 +2,48 @@
 <html lang="en" dir="ltr">
 	<head>
 		<meta charset="utf-8" />
-		<title>Math</title>
+		<title>Octopi</title>
 		<link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
-		<h1><%=topic%></h1>
-		<h3 class="question"><%=question%></h3>
+		<header>
+		    <ul id="headers">
+		    <li>
+				<a href="http://localhost:3000/lobby"> <img src='/public/Images/octopus.png' alt='octopi'></a>
 
-		<div class="choice-container">
-			<% for (let answer of answers) {%>
-			<button
-				class="choice"
-				data-answer="<%=correct_answer%>"
-				data-nextIndex="<%=nextIndex%>"
-			>
-				<%=answer%>
-			</button>
-			<% } %>
-		</div>
+		    </li>
+
+		    <li>
+		        <h1>
+		        Octopi
+		        </h1>
+		    </li>
+
+		    <li>
+		        <img src='/public/Images/user.png' alt='profile/'>
+		    </li>
+
+		    </ul>
+		</header>
+
+		<h5 class="topic"><%=topic%></h5>
+		<h2 class="question"><%=question%></h2>
+
+		<table>
+			<div class="choice-container">
+				<% for (let answer of answers) {%>
+
+						<th><button
+							class="choice"
+							data-answer="<%=correct_answer%>"
+							data-nextIndex="<%=nextIndex%>"
+						>
+							<%=answer%>
+						</button></th>
+
+				<% } %>
+			</div>
+		</table>
 
 		<p><%=correct_answer%></p>
 

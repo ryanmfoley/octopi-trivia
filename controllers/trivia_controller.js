@@ -32,10 +32,19 @@ trivias.get('/:topic/:questionNum', isAuthenticated, async (req, res) => {
 		case 'geography':
 			id = 22
 			break
+		case 'history':
+			id = 23
+			break
 		case 'math':
 			id = 19
 			break
-		case 'science_computers':
+		case 'music':
+			id = 12
+			break
+		case 'politics':
+			id = 24
+			break
+		case 'science':
 			id = 18
 			break
 		default:
