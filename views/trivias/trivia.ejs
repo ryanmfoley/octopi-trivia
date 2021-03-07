@@ -25,9 +25,9 @@
 		<script>
 			const answers = document.querySelectorAll('.answers')
 			for (let answer of answers) {
-				answer.addEventListener('click', (event) => {
+				answer.addEventListener('click', () => {
 					const correctAnswer = answer.getAttribute('data-answer')
-					console.log(event.target);
+
 					if (answer.innerText === correctAnswer) {
 						answer.classList.add('correct')
 						answer.style.background = 'green'

@@ -92,7 +92,7 @@ trivias.get('/:topic/:num', isAuthenticated, (req, res) => {
                     currentUser: req.session.currentUser,
                     topic: req.params.topic,
                     question: questionString,
-                    answers: shuffledAnswersArray,
+                    choices: shuffledAnswersArray,
                     nextIndex: nextIndex,
                     correctAnswer: correctAnswer
             })
