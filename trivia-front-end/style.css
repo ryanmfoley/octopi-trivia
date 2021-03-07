@@ -95,9 +95,11 @@ h5 {
     font-size: 5vh;
 }
 
+
 button {
     background: none;
     border: none;
+
 }
 
 .topic {
@@ -108,12 +110,21 @@ button >img {
     width: 60%;
     height: 60%;
 }
-
+.choice {
+    font-size: 3vh;
+    font-family: 'Delius';
+    font-weight: bold;
+    margin: 0px;
+    top: 10vh;
+    position: relative;
+}
 p{
     font-size: 3vh;
     font-family: 'Delius';
     font-weight: bold;
     margin: 0px;
+    position: relative;
+    top: 7vh;
 }
 /*Progress Bar */
 .meter {
