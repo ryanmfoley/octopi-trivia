@@ -3,16 +3,17 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Math</title>
+		<link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
 	</head>
 	<body>
 		<h1><%=topic%></h1>
 		<h3 class="question"><%=question%></h3>
 
-		<div class="answers-container">
+		<div class="choice-container">
 			<% for (let answer of answers) {%>
 			<button
-				class="answer"
-				data-answer="<%=correctAnswer%>"
+				class="choice"
+				data-answer="<%=correct_answer%>"
 				data-nextIndex="<%=nextIndex%>"
 			>
 				<%=answer%>
@@ -20,21 +21,24 @@
 			<% } %>
 		</div>
 
+		<p><%=correct_answer%></p>
+
 		<p class="next-index">Next index: <%=nextIndex%></p>
 
 		<script>
-			const answers = document.querySelectorAll('.answers')
-			for (let answer of answers) {
-				answer.addEventListener('click', () => {
-					const correctAnswer = answer.getAttribute('data-answer')
+			const choices = document.querySelectorAll('.choice')
 
-					if (answer.innerText === correctAnswer) {
-						answer.classList.add('correct')
-						answer.style.background = 'green'
-					} else {
-						answer.style.background = 'red'
-						answer.classList.add('incorrect')
-					}
+			for (const choice of choices) {
+				choice.addEventListener('click', () => {
+					const correctAnswer = choice.getAttribute('data-answer')
+
+					setTimeout(() => {
+						if (choice.innerText === correctAnswer) {
+							choice.classList.add('correct')
+						} else {
+							choice.classList.add('incorrect')
+						}
+					}, 1500)
 				})
 			}
 		</script>

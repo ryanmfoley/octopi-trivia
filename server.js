@@ -20,6 +20,8 @@ app.use(
 		saveUninitialized: false,
 	})
 )
+app.use('/public', express.static('public'));
+
 
 // Mongo connection // Database
 mongoose.connect(
