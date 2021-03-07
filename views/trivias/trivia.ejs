@@ -12,14 +12,17 @@
 			<% for (let answer of answers) {%>
 			<button
 				class="choice"
+				data-topic="<%=topic%>"
 				data-answer="<%=correct_answer%>"
 				data-nextIndex="<%=nextIndex%>"
+				data-score="<%=score%>"
 			>
 				<%=answer%>
 			</button>
 			<% } %>
 		</div>
 
+		<h3>Score<%=score%></h3>
 		<p><%=correct_answer%></p>
 
 		<p class="next-index">Next index: <%=nextIndex%></p>
@@ -31,15 +34,18 @@
 				choice.addEventListener('click', () => {
 					const correctAnswer = choice.getAttribute('data-answer')
 					const nextIndex = choice.getAttribute('data-nextIndex')
+					const topic = choice.getAttribute('data-topic')
+					let score = choice.getAttribute('data-score')
 
 					setTimeout(() => {
 						if (choice.innerText === correctAnswer) {
 							choice.classList.add('correct')
+							score++
 						} else {
 							choice.classList.add('incorrect')
 						}
-						location.href = `http://localhost:3000/lobby/${topic}/${nextIndex}`
-					}, 1000)
+						location.href = `http://localhost:3000/lobby/${topic}/${nextIndex}/${score}`
+					}, 800)
 				})
 			}
 		</script>

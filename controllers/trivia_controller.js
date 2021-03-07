@@ -18,41 +18,54 @@ trivias.get('/', isAuthenticated, (req, res) => {
 	})
 })
 
-trivias.get('/:topic/:questionNum', isAuthenticated, async (req, res) => {
-	const { topic } = req.params
-	let id
+trivias.get(
+	'/:topic/:questionNum/:score',
+	isAuthenticated,
+	async (req, res) => {
+		const { topic } = req.params
+		let id
 
-	switch (topic) {
-		case 'art':
-			id = 25
-			break
-		case 'film':
-			id = 11
-			break
-		case 'geography':
-			id = 22
-			break
-		case 'math':
-			id = 19
-			break
-		case 'science_computers':
-			id = 18
-			break
-		default:
-			id = 19
+		switch (topic) {
+			case 'art':
+				id = 25
+				break
+			case 'film':
+				id = 11
+				break
+			case 'geography':
+				id = 22
+				break
+			case 'history':
+				id = 23
+				break
+			case 'math':
+				id = 19
+				break
+			case 'music':
+				id = 12
+				break
+			case 'politics':
+				id = 24
+				break
+			case 'science':
+				id = 18
+				break
+			default:
+				id = 19
+		}
+
+		const url = `https://opentdb.com/api.php?amount=6&category=${id}&difficulty=medium&type=multiple`
+
+		try {
+			const someData = await axios.get(url)
+			const triviaObj = someData.data.results
+
+			renderTrivia(req, res, triviaObj)
+		} catch (err) {
+			console.error(err)
+		}
 	}
-
-	const url = `https://opentdb.com/api.php?amount=5&category=${id}&difficulty=medium&type=multiple`
-
-	try {
-		const someData = await axios.get(url)
-		const triviaObj = someData.data.results
-		// renderTrivia(req, res, triviaObj)
-		renderTrivia(req, res, triviaObj)
-	} catch (err) {
-		console.error(err)
-	}
-})
+)
 
 // 	axios
 // 		.get(url)
@@ -66,21 +79,20 @@ trivias.get('/:topic/:questionNum', isAuthenticated, async (req, res) => {
 // })
 
 function renderTrivia(req, res, triviaObj) {
-	const { topic } = req.params
 	const { questionNum } = req.params
-	// const triviaObj = resp.data['results']
+	const { score } = req.params
+	const { topic } = req.params
 	const nextIndex = +req.params.questionNum + 1
 	const questionObj = triviaObj[questionNum]
-	const { question } = questionObj
+	let { question } = questionObj
 	const { incorrect_answers } = questionObj
 	const { correct_answer } = questionObj
 	let answers = incorrect_answers.concat(correct_answer)
 
 	// Shuffle answers
-	answers = answers.sort(() => 0.5 - Math.random())
+	http: answers = answers.sort(() => 0.5 - Math.random())
 
-	if (nextIndex <= triviaObj.length) {
-		// if (true) {
+	if (nextIndex < triviaObj.length) {
 		res.render('trivias/trivia.ejs', {
 			currentUser: req.session.currentUser,
 			topic,
@@ -88,13 +100,12 @@ function renderTrivia(req, res, triviaObj) {
 			answers,
 			correct_answer,
 			nextIndex,
+			score,
 		})
 	} else {
-		res.redirect('/trivias')
+		res.redirect('/lobby')
 	}
 }
-
-//     	<a href="http://localhost:3000/trivias/math/<%=nextIndex%>"
 
 // axios
 // 	.get(
