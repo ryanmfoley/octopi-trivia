@@ -30,6 +30,7 @@
 			for (const choice of choices) {
 				choice.addEventListener('click', () => {
 					const correctAnswer = choice.getAttribute('data-answer')
+					const nextIndex = choice.getAttribute('data-nextIndex')
 
 					setTimeout(() => {
 						if (choice.innerText === correctAnswer) {
@@ -37,7 +38,8 @@
 						} else {
 							choice.classList.add('incorrect')
 						}
-					}, 1500)
+						location.href = `http://localhost:3000/lobby/${topic}/${nextIndex}`
+					}, 1000)
 				})
 			}
 		</script>

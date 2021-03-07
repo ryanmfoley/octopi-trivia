@@ -47,6 +47,7 @@ trivias.get('/:topic/:questionNum', isAuthenticated, async (req, res) => {
 	try {
 		const someData = await axios.get(url)
 		const triviaObj = someData.data.results
+		// renderTrivia(req, res, triviaObj)
 		renderTrivia(req, res, triviaObj)
 	} catch (err) {
 		console.error(err)
