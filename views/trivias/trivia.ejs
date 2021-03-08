@@ -14,20 +14,28 @@
 
 	<body>
 		<header>
-		    <ul id="headers">
-		    <li>
-				<a href="http://localhost:3000/lobby"> <img class='header-image' src='/public/Images/octopus.png' alt='octopi'></a>
+			<ul id="headers">
+				<li>
+					<a href="https://octopi-trivia.herokuapp.com/lobby">
+						<img
+							class="header-image"
+							src="/public/Images/octopus.png"
+							alt="octopi"
+					/></a>
+				</li>
 
 				<li>
 					<h1>Octopi</h1>
 				</li>
 
-
-		    <li>
-		        <img class='header-image' src='/public/Images/user.png' alt='profile/'>
-		    </li>
-
-		    </ul>
+				<li>
+					<img
+						class="header-image"
+						src="/public/Images/user.png"
+						alt="profile/"
+					/>
+				</li>
+			</ul>
 		</header>
 
 		<h5 class="topic"><%=topic%></h5>
@@ -67,15 +75,15 @@
 					const topic = choice.getAttribute('data-topic')
 					let score = choice.getAttribute('data-score')
 
+					if (choice.innerText === correctAnswer) {
+						choice.classList.add('correct')
+						score++
+					} else {
+						choice.classList.add('incorrect')
+					}
 					setTimeout(() => {
-						if (choice.innerText === correctAnswer) {
-							choice.classList.add('correct')
-							score++
-						} else {
-							choice.classList.add('incorrect')
-						}
-						location.href = `http://localhost:3000/lobby/${topic}/${nextIndex}/${score}`
-					}, 800)
+						location.href = `https://octopi-trivia.herokuapp.com/lobby/${topic}/${nextIndex}/${score}`
+					}, 1200)
 				})
 			}
 		</script>
