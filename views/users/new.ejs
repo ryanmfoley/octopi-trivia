@@ -1,24 +1,57 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
+   <meta charset="utf-8" />
+   <title>Octopi</title>
+   <link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
+   <style>
+   @import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+   </style>
+   <style>
+   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+   </style>
+</head>
 
-  </head>
   <body>
-    <nav>
+      <header>
+          <ul id="headers">
+          <li>
+              <a href="http://localhost:3000/lobby"> <img src='/public/Images/octopus.png' alt='octopi'></a>
 
-    </nav>
-    <div class="container">
-      <h1>New User</h1>
+          </li>
+
+          <li>
+              <h1>
+              Octopi
+              </h1>
+          </li>
+
+          <li>
+              <img src='/public/Images/user.png' alt='profile/'>
+          </li>
+
+          </ul>
+      </header>
+
+  <ul>
+     <li>
       <form action="/users" method="POST">
-        <label for="name">User Name:</label>
-        <input type="text" name="username" required/>
-        <label for="color">Password:</label>
-        <input type="password" name="password" />
-        <br>
-        <input type="submit" value="Submit">
-      <form>
+        <label for="name">Username:</label>
+        <input class='text-box' type="text" name="username" required/>
+    </li>
 
-          <a href="http://localhost:3000/sessions/new">Login!</a>
+    <li>
+        <label for="color">Password:</label>
+        <input class='text-box' type="password" name="password" />
+    </li>
+    <li>
+        <input class='submit' type="submit" value="Make New Account">
+    </li>
+    <li>
+      <form>
+          <a href="http://localhost:3000/sessions/new">Already have an account? Click here to login!</a>
+    </li>
+    </ul>
     </div>
   </body>
 </html>
