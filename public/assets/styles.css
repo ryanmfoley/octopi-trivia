@@ -11,19 +11,12 @@ html {
     justify-content: space-between;
 }
 
-#headers>li {
+#headers >li {
     display: inline;
 }
 
-header {
-    width: 100%;
-    height: 10vh;
-
-}
-
-img {
+.header-image {
     height: 18vh;
-    /*border: 10px solid white;*/
     display: inline-block;
     margin: 0;
 }
@@ -34,7 +27,7 @@ h1 {
     display: inline-block;
     margin: 0;
     font-size: 10vh;
-    text-shadow: .5vh .5vh #4C99A9
+    text-shadow: .5vh .5vh #4C99A9;
 }
 
 h2 {
@@ -43,8 +36,8 @@ h2 {
     font-size: 6vh;
     text-align: center;
     margin: 0;
-    margin-top: 3vh;
-    margin-bottom: 3vh;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 table {
@@ -52,23 +45,56 @@ table {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
+    align-self: center;
+    width: 95vw;
 }
 
 th {
     background-color: rgb(255,234,158);
     border-radius: 50px;
     font-family: 'Roboto';
-    padding: 0px;
-    display: inline-block;
-    height: 23vh;
-    width: 20vw;
-    margin: 1vh 5vw 1vh 5vw;
+    padding: 5px;
+    display: inline-flex;
+    height: 25vh;
+    width: 16vw;
+    margin: 1vh 2vw 1vh 2vw;
     justify-content: center;
     box-shadow: .3vw .3vw rgb(247,157,10);
 }
 
 button:hover {
     cursor: pointer;
+}
+
+input:hover {
+    cursor: pointer;
+}
+
+input {
+    margin-bottom: 4vh;
+    font-size: 4vh;
+    border-radius: 10px;
+}
+
+.submit {
+    font-size: 4vh;
+}
+
+.text-box:hover {
+    cursor: text;
+}
+
+.text-box {
+    width: 20vw;
+    height: 4vh;
+}
+
+label {
+    font-size: 4vh;
+}
+
+a {
+    font-size: 3.5vh;
 }
 
 h3 {
@@ -87,8 +113,7 @@ h3 {
 }
 
 h5 {
-    margin: auto;
-    margin-top: 5vh;
+    margin: 0px;
     text-align: center;
     font-size: 5vh;
 }
@@ -103,14 +128,40 @@ button >img {
     height: 60%;
 }
 
+ul {
+    text-decoration: none;
+    text-align: center;
+    list-style: none;
+}
 
+form {
+    text-align: center;
+}
 
 p, .choice{
-    font-size: 3vh;
+    font-size: 2.5vw;
     font-family: 'Delius';
     font-weight: bold;
     margin: 0px;
 }
+
+.choice-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+}
+
+
+.category {
+    text-decoration: none;
+    color: black;
+}
+
+a >img {
+    height: 14vh;
+}
+
 /*Progress Bar */
 .meter {
   box-sizing: content-box;

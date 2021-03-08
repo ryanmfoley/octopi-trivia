@@ -11,23 +11,23 @@
 			@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 		</style>
 	</head>
+
 	<body>
 		<header>
-			<ul id="headers">
-				<li>
-					<a href="http://localhost:3000/lobby">
-						<img src="/public/Images/octopus.png" alt="octopi"
-					/></a>
-				</li>
+		    <ul id="headers">
+		    <li>
+				<a href="http://localhost:3000/lobby"> <img class='header-image' src='/public/Images/octopus.png' alt='octopi'></a>
 
 				<li>
 					<h1>Octopi</h1>
 				</li>
 
-				<li>
-					<img src="/public/Images/user.png" alt="profile/" />
-				</li>
-			</ul>
+
+		    <li>
+		        <img class='header-image' src='/public/Images/user.png' alt='profile/'>
+		    </li>
+
+		    </ul>
 		</header>
 
 		<h5 class="topic"><%=topic%></h5>
@@ -56,7 +56,6 @@
 			</div>
 		</table>
 
-		<h3>progress: <%=progressPercent%></h3>
 		<h3>Score: <%=score%></h3>
 		<p><%=correct_answer%></p>
 
