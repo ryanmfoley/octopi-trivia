@@ -39,7 +39,7 @@
 		</header>
 
 		<h5 class="topic"><%=topic%></h5>
-		<h2 class="question"><%=question%></h2>
+		<h2 class="question"><%-question%></h2>
 
 		<div class="meter">
 			<span style="width: <%=progressPercent%>%"></span>
@@ -56,7 +56,7 @@
 						data-score="<%=score%>"
 						data-topic="<%=topic%>"
 					>
-						<%=answer%>
+						<%-answer%>
 					</button>
 				</th>
 
