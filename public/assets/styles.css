@@ -185,6 +185,14 @@ a >img {
     margin: 2vh;
 }
 
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
+}
+
 /*Progress Bar */
 .meter {
   box-sizing: content-box;
