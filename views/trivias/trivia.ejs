@@ -33,6 +33,9 @@
 		<h5 class="topic"><%=topic%></h5>
 		<h2 class="question"><%=question%></h2>
 
+		<div class="meter">
+			<span style="width: <%=progressPercent%>%"></span>
+		</div>
 		<table>
 			<div class="choice-container">
 				<% for (let answer of answers) {%>
@@ -53,6 +56,7 @@
 			</div>
 		</table>
 
+		<h3>progress: <%=progressPercent%></h3>
 		<h3>Score: <%=score%></h3>
 		<p><%=correct_answer%></p>
 
