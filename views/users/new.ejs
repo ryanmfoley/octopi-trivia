@@ -1,24 +1,106 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+<head>
+   <meta charset="utf-8" />
+   <title>Octopi</title>
+   <link href= "/public/assets/styles.css" rel="stylesheet" type="text/css" />
+   <style>
+   @import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
+   </style>
+   <style>
+   @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+   </style>
+   <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
 
-  </head>
+</head>
   <body>
-    <nav>
-
-    </nav>
-    <div class="container">
-      <h1>New User</h1>
+      <header>
+          <ul id="headers">
+          <li>
+              <a href="http://localhost:3000/lobby"> <img class='header-image' src='/public/Images/octopus.png' alt='octopi'></a>
+          </li>
+          <li>
+              <h1>
+              Octopi
+              </h1>
+          </li>
+          <li>
+              <img class='header-image' src='/public/Images/user.png' alt='profile/'>
+          </li>
+          </ul>
+      </header>
+  <ul>
+     <li>
       <form action="/users" method="POST">
-        <label for="name">User Name:</label>
-        <input type="text" name="username" required/>
-        <label for="color">Password:</label>
-        <input type="password" name="password" />
-        <br>
-        <input type="submit" value="Submit">
-      <form>
 
-          <a href="http://localhost:3000/sessions/new">Login!</a>
+        <input class='text-box' placeholder="Username" type="text" name="username" required/>
+    </li>
+    <li>
+
+        <input class='text-box' placeholder="Password" type="password" name="password" />
+    </li>
+    <li>
+        <input class='submit' type="submit" value="Make New Account">
+    </li>
+    <li>
+      <form>
+          <a href="http://localhost:3000/sessions/new">Already have an account? Click here to login!</a>
+    </li>
+    </ul>
     </div>
+    <footer>
+        <ul>
+            <li id="role">Developers</li>
+            <li>Alfonso Garcia<br>
+                <div class="socials">
+                    <a href="https://github.com/ajgarcia321">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/alfonsojogarcia/">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                </div>
+            </li>
+
+
+            <li>Cavell Wong<br>
+                <div class="socials">
+                    <a href="https://github.com/cavellerson">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </a>
+
+                    <a href="https://www.linkedin.com/in/cavellw/">
+                        <ion-icon name="logo-linkedin"></ion-icon>
+                    </a>
+                </div>
+            <li>Ryan Foley<br><div class="socials">
+                <a href="https://github.com/ryfoa6">
+                    <ion-icon name="logo-github"></ion-icon>
+                </a>
+
+                <a href="https://www.linkedin.com/in/ryfoa6/">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                </a>
+            </div></li>
+        </ul>
+        <ul>
+            <li id="role">UX Designers</li>
+            <li>Larissa Akhmetova
+                <br>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/lurissu/">
+                        <ion-icon name="logo-linkedin"></ion-icon></a>
+                </div>
+            </li>
+            <li>Neslon Tift
+                <br>
+            <div class="socials">
+                <a href="https://www.linkedin.com/in/nelson-tift/">
+                    <ion-icon name="logo-linkedin"></ion-icon></a>
+            </div>
+            </li>
+        </ul>
+    </footer>
   </body>
 </html>
