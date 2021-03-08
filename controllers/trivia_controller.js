@@ -25,35 +25,34 @@ trivias.get(
 		const { topic } = req.params
 		let id
 
-
-	switch (topic) {
-		case 'art':
-			id = 25
-			break
-		case 'film':
-			id = 11
-			break
-		case 'geography':
-			id = 22
-			break
-		case 'history':
-			id = 23
-			break
-		case 'math':
-			id = 19
-			break
-		case 'music':
-			id = 12
-			break
-		case 'politics':
-			id = 24
-			break
-		case 'science':
-			id = 18
-			break
-		default:
-			id = 19
-	}
+		switch (topic) {
+			case 'art':
+				id = 25
+				break
+			case 'film':
+				id = 11
+				break
+			case 'geography':
+				id = 22
+				break
+			case 'history':
+				id = 23
+				break
+			case 'math':
+				id = 19
+				break
+			case 'music':
+				id = 12
+				break
+			case 'politics':
+				id = 24
+				break
+			case 'science':
+				id = 18
+				break
+			default:
+				id = 19
+		}
 
 		const url = `https://opentdb.com/api.php?amount=6&category=${id}&difficulty=medium&type=multiple`
 
@@ -68,26 +67,16 @@ trivias.get(
 	}
 )
 
-// 	axios
-// 		.get(url)
-// 		.then((response) => {
-// 			const { results: triviaObj } = response.data
-// 			renderTrivia(req, res, triviaObj)
-// 		})
-// 		.catch((error) => {
-// 			console.log(error)
-// 		})
-// })
-
 function renderTrivia(req, res, triviaObj) {
 	const { questionNum } = req.params
 	const { score } = req.params
 	const { topic } = req.params
-	const nextIndex = +req.params.questionNum + 1
+	const nextIndex = +questionNum + 1
 	const questionObj = triviaObj[questionNum]
-	let { question } = questionObj
+	const progressPercent = +questionNum * 20
 	const { incorrect_answers } = questionObj
 	const { correct_answer } = questionObj
+	let { question } = questionObj
 	let answers = incorrect_answers.concat(correct_answer)
 
 	// Shuffle answers
@@ -101,13 +90,12 @@ function renderTrivia(req, res, triviaObj) {
 			answers,
 			correct_answer,
 			nextIndex,
+			progressPercent,
 			score,
 		})
 	} else {
 		res.redirect('/lobby')
 	}
 }
-
-
 
 module.exports = trivias
