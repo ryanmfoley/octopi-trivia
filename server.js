@@ -20,8 +20,7 @@ app.use(
 		saveUninitialized: false,
 	})
 )
-app.use('/public', express.static('public'));
-
+app.use('/public', express.static('public'))
 
 // Mongo connection // Database
 mongoose.connect(
@@ -46,13 +45,13 @@ db.on('disconnected', () => {
 })
 
 // Controllers
-const triviasController = require('./controllers/trivia_controller.js')
+const triviasController = require('./controllers/trivia.js')
 app.use('/lobby', triviasController)
 
-const userController = require('./controllers/users_controller.js')
+const userController = require('./controllers/users.js')
 app.use('/users', userController)
 
-const sessionsController = require('./controllers/sessions_controller.js')
+const sessionsController = require('./controllers/sessions.js')
 app.use('/sessions', sessionsController)
 
 // Routes

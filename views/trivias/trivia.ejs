@@ -15,8 +15,7 @@
 	<body>
 		<%- include ('../partials/header.ejs') %>
 
-
-		<h5 class="topic"><%=topic%></h5>
+		<h5 class="topic"><%= topic %></h5>
 		<h2 class="question"><%-question%></h2>
 
 		<div class="meter">
@@ -34,7 +33,7 @@
 						data-score="<%=score%>"
 						data-topic="<%=topic%>"
 					>
-						<%-answer%>
+						<%- answer %>
 					</button>
 				</th>
 
@@ -42,7 +41,7 @@
 			</div>
 		</table>
 
-		<h3>Score: <%=score%></h3>
+		<h3>Score: <%= score %></h3>
 		<script>
 			const choices = document.querySelectorAll('.choice')
 

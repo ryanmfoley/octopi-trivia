@@ -80,7 +80,7 @@ function renderTrivia(req, res, triviaObj) {
 	let answers = incorrect_answers.concat(correct_answer)
 
 	// Shuffle answers
-	http: answers = answers.sort(() => 0.5 - Math.random())
+	answers = answers.sort(() => 0.5 - Math.random())
 
 	if (nextIndex < triviaObj.length) {
 		res.render('trivias/trivia.ejs', {
