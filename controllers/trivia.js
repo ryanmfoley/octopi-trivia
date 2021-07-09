@@ -2,6 +2,8 @@ const express = require('express')
 const trivias = express.Router()
 const axios = require('axios')
 
+const url = require('../config/config.js')
+
 const isAuthenticated = (req, res, next) => {
 	if (req.session.currentUser) {
 		return next()
@@ -14,7 +16,7 @@ trivias.use(isAuthenticated)
 
 trivias.get('/', isAuthenticated, (req, res) => {
 	res.render('trivias/lobby.ejs', {
-		currentUser: req.session.currentUser,
+		url,
 	})
 })
 
@@ -54,11 +56,12 @@ trivias.get(
 				id = 19
 		}
 
-		const url = `https://opentdb.com/api.php?amount=6&category=${id}&difficulty=medium&type=multiple`
+		const apiUrl = `https://opentdb.com/api.php?amount=6&category=${id}&difficulty=medium&type=multiple`
 
 		try {
-			const someData = await axios.get(url)
+			const someData = await axios.get(apiUrl)
 			const triviaObj = someData.data.results
+			console.log('axiosGet', someData)
 
 			renderTrivia(req, res, triviaObj)
 		} catch (err) {

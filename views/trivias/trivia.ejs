@@ -43,6 +43,11 @@
 
 		<h3>Score: <%= score %></h3>
 		<script>
+			const url =
+				window.location.hostname === 'localhost'
+					? 'http://localhost:3000/lobby'
+					: 'https://octopi-trivia.herokuapp.com/lobby'
+
 			const choices = document.querySelectorAll('.choice')
 
 			for (const choice of choices) {
@@ -59,7 +64,7 @@
 						choice.classList.add('incorrect')
 					}
 					setTimeout(() => {
-						location.href = `https://octopi-trivia.herokuapp.com/lobby/${topic}/${nextIndex}/${score}`
+						location.href = `${url}/${topic}/${nextIndex}/${score}`
 					}, 1200)
 				})
 			}

@@ -1,10 +1,12 @@
 const bcrypt = require('bcrypt')
 const express = require('express')
 const sessions = express.Router()
+
 const User = require('../models/users.js')
+const url = require('../config/config.js')
 
 sessions.get('/new', (req, res) => {
-	res.render('sessions/new.ejs')
+	res.render('sessions/new.ejs', { url })
 })
 
 sessions.post('/', (req, res) => {

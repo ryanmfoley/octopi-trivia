@@ -9,7 +9,12 @@ require('dotenv').config()
 const app = express()
 const db = mongoose.connection
 const PORT = process.env.PORT
-const mongodbURI = process.env.MONGODBURI
+// const mongodbURI = process.env.MONGODBURI
+const mongodbURI =
+	process.env.NODE_ENV === 'production'
+		? process.env.MONGODBURI
+		: 'mongodb://localhost/projects-db'
+
 // Middleware
 app.use(methodOverride('_method'))
 app.use(express.urlencoded({ extended: true }))
