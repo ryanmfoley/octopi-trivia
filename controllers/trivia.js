@@ -61,7 +61,6 @@ trivias.get(
 		try {
 			const someData = await axios.get(apiUrl)
 			const triviaObj = someData.data.results
-			console.log('axiosGet', someData)
 
 			renderTrivia(req, res, triviaObj)
 		} catch (err) {

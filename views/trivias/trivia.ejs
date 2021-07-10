@@ -3,6 +3,18 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>Octopi</title>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.15.3/css/solid.css"
+			integrity="sha384-LA8Ug4T/nhVkyhrSmSirsoAo9iDrBk8E7U80aSPeD+w3vO8PzOJIS6agGcbIwwX0"
+			crossorigin="anonymous"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://use.fontawesome.com/releases/v5.15.3/css/fontawesome.css"
+			integrity="sha384-wESLQ85D6gbsF459vf1CiZ2+rr+CsxRY0RpiF1tLlQpDnAgg6rwdsUF1+Ics2bni"
+			crossorigin="anonymous"
+		/>
 		<link href="/public/assets/styles.css" rel="stylesheet" type="text/css" />
 		<style>
 			@import url('https://fonts.googleapis.com/css2?family=Delius&display=swap');
@@ -35,13 +47,15 @@
 					>
 						<%- answer %>
 					</button>
+					<i class="fas fa-check"></i>
+					<i class="fas fa-times"></i>
 				</th>
 
 				<% } %>
 			</div>
 		</table>
-
 		<h3>Score: <%= score %></h3>
+		`
 		<script>
 			const url =
 				window.location.hostname === 'localhost'
@@ -58,9 +72,11 @@
 					let score = choice.getAttribute('data-score')
 
 					if (choice.innerText === correctAnswer) {
+						choice.innerText = ''
 						choice.classList.add('correct')
 						score++
 					} else {
+						choice.innerText = ''
 						choice.classList.add('incorrect')
 					}
 					setTimeout(() => {
